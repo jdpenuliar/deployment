@@ -4,6 +4,7 @@ class Users(Controller):
     def __init__(self, action):
         super(Users, self).__init__(action)
         self.load_model('User')
+        self.load_model('Poke')
         self.db = self._app.db
     def index(self):
         if session.get('userid')!= None:
@@ -79,5 +80,5 @@ class Users(Controller):
         return redirect('/')
 
     def pokeuser(self,id):
-        self.models['User'].pokeuser(id,session['userid'])
+        self.models['Poke'].pokeuser(id,session['userid'])
         return redirect('/')
